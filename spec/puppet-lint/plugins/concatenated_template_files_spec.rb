@@ -5,13 +5,13 @@ describe 'concatenated_template_files' do
 
   context 'template function with one filename' do
     let(:code) do
-      <<-EOS
+      <<-TEST_CLASS
         class single_templated_file {
           file { '/tmp/templated':
             content => template('mymodule/single_file.erb'),
           }
         }
-      EOS
+      TEST_CLASS
     end
 
     it 'should not detect any problems' do
@@ -19,16 +19,15 @@ describe 'concatenated_template_files' do
     end
   end
 
-
   context 'template function with multiple filenames' do
     let(:code) do
-      <<-EOS
+      <<-TEST_CLASS
         class multi_templated_file {
           file { '/tmp/templated':
             content => template('mymodule/first_file.erb', 'mymodule/second_file.erb'),
           }
         }
-      EOS
+      TEST_CLASS
     end
 
     it 'should detect a single problem' do
@@ -38,7 +37,5 @@ describe 'concatenated_template_files' do
     it 'should create a warning' do
       expect(problems).to contain_warning(msg).on_line(3).in_column(24)
     end
-
   end
 end
-
