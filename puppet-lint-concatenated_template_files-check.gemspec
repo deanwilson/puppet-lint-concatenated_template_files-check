@@ -13,18 +13,19 @@ Gem::Specification.new do |spec|
   ]
   spec.test_files  = Dir['spec/**/*']
   spec.summary     = 'puppet-lint concatenated_template_files check'
-  spec.description = <<-EOF
+  spec.description = <<-DESCRIPTION
     Extends puppet-lint to ensure all template functions expand a single
     file, rather than unexpectedly concatenating multiple template files in
     to a single string.
-  EOF
+  DESCRIPTION
 
   spec.add_dependency             'puppet-lint', '>= 1.1', '< 3.0'
-  spec.add_development_dependency 'rspec', '~> 3.9.0'
-  spec.add_development_dependency 'rspec-its', '~> 1.0'
-  spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'
-  spec.add_development_dependency 'rubocop', '~> 0.88.0'
+
   spec.add_development_dependency 'rake', '~> 13.0.0'
+  spec.add_development_dependency 'rspec', '~> 3.9.0'
+  spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'
+  spec.add_development_dependency 'rspec-its', '~> 1.0'
   spec.add_development_dependency 'rspec-json_expectations', '~> 2.2'
+  spec.add_development_dependency 'rubocop', '~> 0.88.0'
   spec.add_development_dependency 'simplecov', '~> 0.18.0'
 end
