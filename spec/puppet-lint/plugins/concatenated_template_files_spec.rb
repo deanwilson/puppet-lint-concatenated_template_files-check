@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'concatenated_template_files' do
   let(:msg) { 'calling "template" with multiple files concatenates them into a single string' }
 
-  context 'template function with one filename' do
+  context 'when template function is passed one filename' do
     let(:code) do
       <<-TEST_CLASS
         class single_templated_file {
@@ -14,12 +14,12 @@ describe 'concatenated_template_files' do
       TEST_CLASS
     end
 
-    it 'should not detect any problems' do
+    it 'does not detect any problems' do
       expect(problems).to have(0).problems
     end
   end
 
-  context 'template function with multiple filenames' do
+  context 'when template function is passed multiple filenames' do
     let(:code) do
       <<-TEST_CLASS
         class multi_templated_file {
@@ -30,11 +30,11 @@ describe 'concatenated_template_files' do
       TEST_CLASS
     end
 
-    it 'should detect a single problem' do
+    it 'detects a single problem' do
       expect(problems).to have(1).problem
     end
 
-    it 'should create a warning' do
+    it 'creates a warning' do
       expect(problems).to contain_warning(msg).on_line(3).in_column(24)
     end
   end
