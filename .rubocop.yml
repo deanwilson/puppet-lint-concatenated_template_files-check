@@ -26,5 +26,8 @@ Metrics/AbcSize:
 Metrics/CyclomaticComplexity:
   Max: 10
 
+Metrics/PerceivedComplexity:
+  Max: 10
+
 RSpec/DescribeClass:
   Enabled: false
