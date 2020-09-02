@@ -3,6 +3,40 @@ require 'spec_helper'
 describe 'concatenated_template_files' do
   let(:msg) { 'calling "template" with multiple files concatenates them into a single string' }
 
+  context 'when the manifest has no file resources' do
+    let(:code) do
+      <<-TEST_CLASS
+        class no_file_resource {
+          host { 'syslog':
+            ip => '10.10.10.10',
+          }
+        }
+      TEST_CLASS
+    end
+
+    it 'does not detect any problems' do
+      expect(problems).to have(0).problems
+    end
+  end
+
+  context 'with file resource but no template call' do
+    context 'when the template has a relative module path' do
+      let(:code) do
+        <<-TEST_CLASS
+          class template_tester {
+            file { '/tmp/template':
+              content => 'A static string',
+            }
+          }
+        TEST_CLASS
+      end
+
+      it 'detects no problems' do
+        expect(problems).to have(0).problems
+      end
+    end
+  end
+
   context 'when template function is passed one filename' do
     let(:code) do
       <<-TEST_CLASS
