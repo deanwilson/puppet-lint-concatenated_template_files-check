@@ -1,5 +1,7 @@
 # puppet-lint concatenated template files check
 
+[![Actions Status](https://github.com/deanwilson/puppet-lint-concatenated_template_files-check/workflows/Ruby/badge.svg)](https://github.com/deanwilson/puppet-lint-concatenated_template_files-check/actions)
+
 Extends puppet-lint to ensure all `template` functions expand a single
 file, rather than unexpectedly concatenating multiple template files in
 to a single string.
